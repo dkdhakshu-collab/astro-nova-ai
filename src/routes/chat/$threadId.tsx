@@ -142,6 +142,3 @@ function ChatThreadPage() {
     </ClientOnly>
   );
 }
-
-// Referenced so TS keeps the import used in handleDelete flow
-void getThread;
