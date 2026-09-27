@@ -159,6 +159,9 @@ function SiteHeader() {
           >
             Planets
           </Link>
+          <Link to="/chat" activeProps={{ className: "text-foreground font-medium" }}>
+            Ask Nova
+          </Link>
         </nav>
       </div>
     </header>
