@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PlanetsPlanetRouteImport } from './routes/planets.$planet'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PlanetsPlanetRoute = PlanetsPlanetRouteImport.update({
+  id: '/planets/$planet',
+  path: '/planets/$planet',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/planets/$planet': typeof PlanetsPlanetRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/planets/$planet': typeof PlanetsPlanetRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/planets/$planet': typeof PlanetsPlanetRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/planets/$planet'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/planets/$planet'
+  id: '__root__' | '/' | '/planets/$planet'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PlanetsPlanetRoute: typeof PlanetsPlanetRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +58,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/planets/$planet': {
+      id: '/planets/$planet'
+      path: '/planets/$planet'
+      fullPath: '/planets/$planet'
+      preLoaderRoute: typeof PlanetsPlanetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PlanetsPlanetRoute: PlanetsPlanetRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
