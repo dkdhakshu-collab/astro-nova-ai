@@ -31,8 +31,10 @@ export const Route = createFileRoute("/chat/$threadId")({
   component: ChatThreadPage,
 });
 
+const SERVER_THREADS: ReturnType<typeof loadThreads> = [];
+
 function useThreads() {
-  return useSyncExternalStore(subscribeThreads, loadThreads, () => []);
+  return useSyncExternalStore(subscribeThreads, loadThreads, () => SERVER_THREADS);
 }
 
 function ChatThreadPage() {
