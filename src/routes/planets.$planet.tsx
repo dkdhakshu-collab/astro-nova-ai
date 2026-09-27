@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { planets, getPlanet, nextPlanet } from "@/data/planets";
 import { planetImage } from "@/data/planetImages";
+import { PlanetFactCard } from "@/components/PlanetFactCard";
 
 export const Route = createFileRoute("/planets/$planet")({
   loader: ({ params }) => {
@@ -145,6 +146,10 @@ function PlanetProfile() {
           ))}
         </ul>
       </section>
+
+      <div className="mt-16">
+        <PlanetFactCard slug={planet.slug} name={planet.name} />
+      </div>
 
       <section className="mt-16 flex items-center justify-between rounded-2xl border border-border bg-card p-6">
         <div>
