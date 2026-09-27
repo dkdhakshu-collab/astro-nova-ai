@@ -184,5 +184,5 @@ export function getPlanet(slug: string): Planet | undefined {
 
 export function nextPlanet(slug: string): Planet {
   const index = planets.findIndex((p) => p.slug === slug);
-  return planets[(index + 1) % planets.length];
+  return planets[(index + 1) % planets.length] ?? planets[0]!;
 }

@@ -152,7 +152,11 @@ function SiteHeader() {
           <Link to="/" activeProps={{ className: "text-foreground font-medium" }}>
             Home
           </Link>
-          <Link to="/planets/mercury" activeProps={{ className: "text-foreground font-medium" }}>
+          <Link
+            to="/planets/$planet"
+            params={{ planet: "mercury" }}
+            activeProps={{ className: "text-foreground font-medium" }}
+          >
             Planets
           </Link>
         </nav>
