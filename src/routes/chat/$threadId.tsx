@@ -6,7 +6,6 @@ import { ChatWindow } from "@/components/chat/ChatWindow";
 import {
   createThread,
   deleteThread,
-  getThread,
   loadThreads,
   subscribeThreads,
 } from "@/lib/chat-store";
